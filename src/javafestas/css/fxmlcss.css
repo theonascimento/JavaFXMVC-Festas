@@ -1,0 +1,42 @@
+.button.cadastro {
+    -fx-background-color: #2E3159;
+    
+}
+
+.background-color {
+    -fx-background-color: #011526;
+}
+
+.background-imagem {
+    -fx-background-image: url("logo-day-and-nigth.png");
+}
+
+.background-imagemtopo {
+    -fx-background-image: url("logo-sol-lua-topo.png");
+}
+
+.custom-dashed-border {
+    -fx-border-color:  #E0CA1F ;
+    -fx-border-width: 3 3 3 3 ; 
+}
+
+.custom-border2 {
+    -fx-border-color:  #E0CA1F ;
+    -fx-border-width: 0 3 3 3 ; 
+}
+
+.button-azul {
+    -fx-font-family: "SansSerif";
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-color: #3c7fb1,
+        linear-gradient(#fafdfe, #e8f5fc),
+        linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);
+}
+
+/* #2E3159  */
+/* Color Theme Swatches in Hex */
+.dark-blue-green-teal-grunge-abstract-concrete-wall-texture-background,-panoramic-background-1-hex { color: #011526; }
+.dark-blue-green-teal-grunge-abstract-concrete-wall-texture-background,-panoramic-background-2-hex { color: #012E40; }
+.dark-blue-green-teal-grunge-abstract-concrete-wall-texture-background,-panoramic-background-3-hex { color: #025959; }
+.dark-blue-green-teal-grunge-abstract-concrete-wall-texture-background,-panoramic-background-4-hex { color: #02735E; }
+.dark-blue-green-teal-grunge-abstract-concrete-wall-texture-background,-panoramic-background-5-hex { color: #038C65; }

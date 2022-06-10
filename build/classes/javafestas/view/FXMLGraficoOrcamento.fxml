@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafestas.controller.FXMLGraficoOrcamentoController">
+   <children>
+      <BarChart fx:id="lineChart" layoutX="21.0" layoutY="54.0" prefHeight="423.0" prefWidth="610.0">
+        <xAxis>
+          <CategoryAxis fx:id="categoryAxis" tickLabelFill="#e0ca1f" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="numberAxis" side="LEFT" tickLabelFill="#e0ca1f" />
+        </yAxis>
+      </BarChart>
+      <Label layoutX="241.0" layoutY="32.0" text="Orçamento por Mês" textFill="#e0ca1f">
+         <font>
+            <Font name="SansSerif Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/fxmlcss.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafestas.controller.FXMLMenuPrincipalController">
+   <children>
+      <Pane prefHeight="100.0" prefWidth="800.0" styleClass="background-color">
+         <children>
+            <Pane layoutX="367.0" layoutY="2.0" prefHeight="100.0" prefWidth="100.0" styleClass="background-imagem" />
+         </children>
+      </Pane>
+      <VBox layoutY="100.0" prefHeight="500.0" prefWidth="150.0" styleClass="background-color">
+         <children>
+            <Pane prefHeight="57.0" prefWidth="120.0" />
+            <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" popupSide="RIGHT" prefHeight="50.0" prefWidth="150.0" styleClass="background-color" text="CADASTROS" textFill="WHITE">
+              <items>
+                <MenuItem fx:id="menuItemCadastrosCliente" mnemonicParsing="false" onAction="#handleMenuItemCadastrosClientes" text="Cliente" />
+                <MenuItem fx:id="menuItemCadastrosLocal" mnemonicParsing="false" onAction="#handleMenuItemCadastrosLocal" text="Local" />
+                  <MenuItem fx:id="menuItemCadastrosProduto" mnemonicParsing="false" text="Produto" />
+              </items>
+            </MenuButton>
+            <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" popupSide="RIGHT" prefHeight="50.0" prefWidth="150.0" styleClass="background-color" text="PROCESSOS" textFill="WHITE">
+              <items>
+                <MenuItem fx:id="menuItemProcessosOrcamento" mnemonicParsing="false" text="Orçamento" />
+              </items>
+            </MenuButton>
+            <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" popupSide="RIGHT" prefHeight="50.0" prefWidth="150.0" styleClass="background-color" text="GRÁFICOS" textFill="WHITE">
+              <items>
+                <MenuItem fx:id="menuItemGraficosOrcamentoPorMes" mnemonicParsing="false" text="Orçamento por Mês" />
+              </items>
+            </MenuButton>
+            <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" popupSide="RIGHT" prefHeight="50.0" prefWidth="150.0" styleClass="background-color" text="RELATÓRIOS" textFill="WHITE">
+              <items>
+                <MenuItem fx:id="menuItemRelatoriosQuantiaArrecadadaPorLocal" mnemonicParsing="false" text="Quantia Arrecadada por Local" />
+              </items>
+            </MenuButton>
+         </children>
+      </VBox>
+      <AnchorPane fx:id="anchorPane" layoutX="150.0" layoutY="101.0" prefHeight="500.0" prefWidth="650.0" />
+   </children>
+</AnchorPane>
