@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: #E0CA1F;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafestas.controller.FXMLThreadSocketsController">
+   <children>
+      <Label layoutX="132.0" layoutY="49.0" text="Número de Clientes Conectados">
+         <font>
+            <Font name="SansSerif Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTES" layoutX="128.0" layoutY="179.0" prefHeight="70.0" prefWidth="378.0">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

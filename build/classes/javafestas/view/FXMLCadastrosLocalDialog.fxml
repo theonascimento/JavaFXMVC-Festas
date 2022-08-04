@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="290.0" prefWidth="450.0" style="-fx-border-color: #E0CA1F; -fx-border-width: 6;" styleClass="background-color" stylesheets="@../css/fxmlcss.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafestas.controller.FXMLCadastrosLocalDialogController">
+   <children>
+      <GridPane layoutX="64.0" layoutY="39.0" prefHeight="158.0" prefWidth="351.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="25.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.20001220703125" minWidth="10.0" prefWidth="63.599999999999994" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="316.0" minWidth="10.0" prefWidth="316.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="labelLocalNome" text="Nome" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelLocalUF" text="UF" textFill="WHITE" GridPane.rowIndex="1">
+               <font>
+                  <Font name="SansSerif Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelLocalCidade" text="Cidade" textFill="WHITE" GridPane.rowIndex="2">
+               <font>
+                  <Font name="SansSerif Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelLocalCEP" text="CEP" textFill="WHITE" GridPane.rowIndex="3">
+               <font>
+                  <Font name="SansSerif Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldLocalNome" GridPane.columnIndex="1" />
+            <TextField fx:id="textFieldLocalUF" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textFieldLocalCidade" prefHeight="26.0" prefWidth="274.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldLocalCEP" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <Group layoutX="128.0" layoutY="226.0" AnchorPane.bottomAnchor="38.0">
+         <children>
+            <Button fx:id="buttonConfirmar" mnemonicParsing="false" onAction="#handleButtonConfirmar" styleClass="button-azul" text="CONFIRMAR" />
+            <Button fx:id="buttonCancelar" layoutX="120.0" mnemonicParsing="false" onAction="#handleButtonCancelar" styleClass="button-azul" text="CANCELAR" />
+         </children>
+      </Group>
+   </children>
+</AnchorPane>

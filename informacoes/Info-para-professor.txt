@@ -1,0 +1,36 @@
+Nome projeto  = JavaFXMVC-Festas
+pacote        = javafestas
+script_javafestas.sql = javafestas     <- nome do banco
+
+Tema: 				Festas
+Manutenção de Cadastro: 	Local de Evento
+Processo de Negócio: 		Orçamento
+Regra de Negócio: 		Disponibilidade do local
+Gráfico:                        Orçamento por mes
+Relatório: 			Mostrar valor arrecadado de um local de evento
+
+Local: código	Local: Nome	Total Arrecadado
+     1		Local 1		      6000
+     2		Local 2		      6000
+
+Filtro: 		join
+Função de agregação: 	sum
+
+--- INFORMAÇOES DO PROJETO ---
+Manutenção de Cadastro: Completo, está inserindo, alterando e removendo
+Processo de Negócio: Incompleto por não estar funcionando a regra de negocio
+Gráfico: Completo
+Relatório:  Completo
+
+--- QUERY USADA ---
+
+SELECT L.nome, O.cdLocal, SUM(O.valor) AS total 
+  FROM orcamentos O
+  INNER JOIN locais L
+  ON O.cdLocal = L.cdLocal
+GROUP BY O.cdLocal, L.nome
+ORDER BY cdLocal
+
+O SELECT vai mostrar o código do local, o nome do local e o sum vai somar os valores que aquele lugar arregadou com os orçamentos e mostrar no total
+o código do local junto com os valores esta na tabela orcamentos.
+o nome do local esta na tabela locais, usei o GROUP BY para agrupar os codigos dos lugares e os nomes

@@ -1,0 +1,271 @@
+INFORMAÇOES ANEXADAS PARA ACOMPANHAMENTO DO PROJETO
+
+Nome projeto  = JavaFXMVC-Festas
+pacote        = javafestas
+script_javafestas = javafestas     <- nome do banco
+
+Tema: 				Festas
+Manutenção de Cadastro: 	Local de Evento
+Processo de Negócio: 		Orçamento
+Regra de Negócio: 		Disponibilidade do local
+Gráfico:                        Orçamento por mes
+Relatório: 			Mostrar valor arrecadado de um local de evento
+
+
+Local de Evento	Valor arrecadado (R$)
+Local 1	R$ 5.000,00
+Local 2	R$ 4.500,00
+
+Filtro: 		join, where
+Função de agregação: 	sum
+
+
+-> Menu principal
+
+Cadastros  { Cliente = menuItemCadastrosCliente
+	    Local    = menuItemCadastrosLocal
+            Produto  = menuItemCadastrosProduto
+
+Processos  { Orçamento = menuItemProcessosOrcamento
+
+Gráficos   { Orçamento Por Mês = menuItemGraficosOrcamentoPorMes
+
+Relatórios { Quantia arrecadada por Local = menuItemRelatoriosQuantiaArrecadadaPorLocal
+
+anchorPane = pref Width 650 x pref Height 500 = anchorPane
+
+-> Cadastros Cliente
+
+tableview = tableViewClientes
+tablecolumn Nome = tableColumnClienteNome
+tablecolumn CPF  = tableColumnClienteCPF
+
+label codigo   = labelClienteCodigo
+label nome     = labelClienteNome
+label cpf      = labelClienteCPF
+label telefone = labelClienteTelefone
+
+botao inserir = buttonInserir
+botao alterar = buttonAlterar
+botao remover = buttonRemover
+
+-> Cadastros Cliente Dialog
+
+label nome     = labelClienteNome
+label cpf      = labelClienteCPF
+label telefone = labelClienteTelefone
+
+textField nome     = textFieldClienteNome
+textField CPF      = textFieldClienteCPF
+textField Telefone = textFieldClienteTelefone
+
+button confirmar = buttonConfirmar
+button cancelar  = buttonCancelar
+
+-> Cadastros Local
+
+tableview        = tableViewLocal
+tablecolumn Nome = tableColumnLocalNome
+tablecolumn CEP  = tableColumnLocalCEP
+
+label codigo   = labelLocalCodigo
+label nome     = labelLocalNome
+label uf       = labelLocalUF
+label Cidade   = labelLocalCidade
+label CEP      = labelLocalCEP
+
+botao inserir = buttonInserir
+botao alterar = buttonAlterar
+botao remover = buttonRemover
+
+-> Cadastros Local Dialog
+
+label nome     = labelLocalNome
+label uf       = labelLocalUF
+label Cidade   = labelLocalCidade
+label CEP      = labelLocalCEP
+
+textField nome   = textFieldLocalNome
+textField UF     = textFieldLocalUF
+textField Cidade = textFieldLocalCidade
+textField CEP    = textFieldLocalCEP
+
+button confirmar = buttonConfirmar
+button cancelar  = buttonCancelar
+
+-> Processos Orçamento
+
+tableview            = tableViewOrcamento
+tablecolumn cod      = tableColumnOrcamentoCodigo
+tablecolumn cliente  = tableColumnOrcamentoCliente
+tablecolumn local    = tableColumnOrcamentoLocal
+tablecolumn data     = tableColumnOrcamentoData
+
+label codigo  = labelOrcamentoCodigo
+label cliente = labelOrcamentoCliente
+label local   = labelOrcamentoLocal
+label data    = labelOrcamentoData
+label valor   = labelOrcamentoValor
+label pago    = labelOrcamentoPago
+
+botao inserir = buttonInserir
+botao alterar = buttonAlterar
+botao remover = buttonRemover
+
+-> Processos Orçamento Dialog
+
+combobox cliente       = comboBoxOrcamentoCliente
+combobox local         = comboBoxOrcamentoLocal
+data                   = datePickerOrcamentoData
+ckeckBox               = checkBoxOrcamentoPago
+combobox produto       = comboBoxOrcamentoProduto
+textField quantidade   = textFieldOrcamentoQuantidade
+button adicionar       = buttonAdicionar
+button adicionar       = buttonRemover
+tableView              = tableViewItensOrcamento
+tablecolumn produto    = tableColumnOrcamentoProduto
+tablecolumn quantidade = tableColumnOrcamentoQuantidade
+tablecolumn valor      = tableColumnOrcamentoValor
+textField valor total  = textFieldOrcamentoValor
+button confirmar       = buttonConfirmar
+button cancelar        = buttonCancelar
+
+-> Grafico Orçamento
+
+Barchart = lineChart  (era line e virou bar)
+category = categoryAxis
+number   = numberAxis
+
+-> Relatorio
+
+tableView                 = tableViewOrca 
+tablecolumn cod orcamento = tableColumnCodOrca
+tablecolumn valor         = tableColumnValo
+tablecolumn data          = tableColumnDat
+tablecolumn pago          = tableColumnPag
+button imprimir           = buttonImprimir
+
+query -> certa
+
+SELECT L.nome, O.cdLocal, SUM(O.valor) AS total 
+  FROM orcamentos O
+  INNER JOIN locais L
+  ON O.cdLocal = L.cdLocal
+GROUP BY O.cdLocal, L.nome
+ORDER BY cdLocal
+
+query -> para teste
+
+SELECT orcamentos.*, locais.nome
+  FROM orcamentos, locais
+  WHERE orcamentos.cdLocal = locais.cdLocal
+ORDER BY cdLocal
+
+-> Tabelas / Classes
+
+clientes          = Cliente
+locais   	  = Local
+orcamentos        = Orcamento
+produtos          = Produto
+itensdeorcamentos = ItemDeOrcamento
+
+
+-> Versão incompleta do script como backup
+
+CREATE TABLE clientes(
+   cdCliente serial      NOT NULL,
+   nome      varchar(50) NOT NULL,
+   cpf 	     varchar(50) NOT NULL,
+   telefone  varchar(50) NOT NULL,
+   CONSTRAINT pk_clientes
+     PRIMARY KEY(cdCliente)
+);
+
+CREATE TABLE locais(
+   cdLocal serial      NOT NULL,
+   nome    varchar(50) NOT NULL,
+   uf      char(2)     NOT NULL,
+   cidade  varchar(50) NOT NULL,
+   cep     varchar(50) NOT NULL,
+   CONSTRAINT pk_locais
+     PRIMARY KEY(cdLocal)
+);
+
+CREATE TABLE orcamentos(
+   cdOrcamento  serial 	NOT NULL,
+   data 	date  	NOT NULL,
+   valor 	float 	NOT NULL,
+   pago 	boolean NOT NULL,
+   cdCliente 	int,
+   cdLocal 	int,
+   CONSTRAINT pk_orcamentos
+     PRIMARY KEY(cdOrcamento),
+   CONSTRAINT fk_orcamentos_clientes
+     FOREIGN KEY(cdCliente)
+     REFERENCES clientes(cdCliente),
+   CONSTRAINT fk_orcamentos_locais
+     FOREIGN KEY(cdLocal)
+     REFERENCES locais(cdLocal)
+);
+
+CREATE TABLE produtos(
+   cdProduto  serial      NOT NULL,
+   nome       varchar(50) NOT NULL,
+   preco      float       NOT NULL,
+   quantidade int     	  NOT NULL,
+   CONSTRAINT pk_produtos
+     PRIMARY KEY(cdProduto)
+);
+
+CREATE TABLE itensdeorcamento(
+   cdItemDeOrcamento serial NOT NULL,
+   quantidade        int    NOT NULL,
+   valor       	     float  NOT NULL,
+   cdProduto   	     int,
+   cdOrcamento 	     int,
+   CONSTRAINT pk_itensdeorcamento
+      PRIMARY KEY(cdItemDeOrcamento),
+   CONSTRAINT fk_itensdeorcamento_produtos
+      FOREIGN KEY(cdProduto)
+      REFERENCES produtos(cdProduto),
+   CONSTRAINT fk_itensdeorcamento_orcamentos
+      FOREIGN KEY(cdOrcamento)
+      REFERENCES orcamentos(cdOrcamento)
+);
+
+
+INSERT INTO clientes(nome, cpf, telefone) VALUES('Rachel','111.111.111-11','(11) 1111-1111');
+INSERT INTO clientes(nome, cpf, telefone) VALUES('Ross','222.222.222-22','(22) 2222-2222');
+INSERT INTO clientes(nome, cpf, telefone) VALUES('Monica','333.333.333-33','(33) 3333-3333');
+INSERT INTO clientes(nome, cpf, telefone) VALUES('Joey','444.444.444-44','(44) 4444-4444');
+INSERT INTO clientes(nome, cpf, telefone) VALUES('Phoebe','555.555.555-55','(55) 5555-5555');
+INSERT INTO clientes(nome, cpf, telefone) VALUES('Chandler','666.666.666-66','(66) 6666-6666');
+INSERT INTO clientes(nome, cpf, telefone) VALUES('Janice','777.777.777-77','(77) 7777-7777');
+INSERT INTO clientes(nome, cpf, telefone) VALUES('Ben','888.888.888-88','(88) 8888-8888');
+INSERT INTO clientes(nome, cpf, telefone) VALUES('Gunther','999.999.999-99','(99) 9999-9999');
+
+INSERT INTO locais(nome, uf, cidade, cep) VALUES('Club Campestre','ES','Muqui','29480-000');
+INSERT INTO locais(nome, uf, cidade, cep) VALUES('Angra dos Reis','RJ','Rio de Janeiro','23900-050');
+INSERT INTO locais(nome, uf, cidade, cep) VALUES('Trindade','RJ','Rio de Janeiro','74475-090');
+INSERT INTO locais(nome, uf, cidade, cep) VALUES('Fernando de Noronha','PE','Fernando de Noronha','53990-000');
+INSERT INTO locais(nome, uf, cidade, cep) VALUES('Rio das Ostras','RJ','Rio de Janeiro','54475-090');
+INSERT INTO locais(nome, uf, cidade, cep) VALUES('Ilhabela','SP','Ilhabela','11630-000');
+INSERT INTO locais(nome, uf, cidade, cep) VALUES('Trancoso','BA','Porto Seguro','45818-000');
+INSERT INTO locais(nome, uf, cidade, cep) VALUES('Hotel Miramar','SC','lages','88520-000');
+INSERT INTO locais(nome, uf, cidade, cep) VALUES('Parque Ibirapuera','SP','Sao Paulo','04094-050');
+
+INSERT INTO produtos(nome, preco, quantidade) VALUES('Buffet', '5000.00', '50');
+INSERT INTO produtos(nome, preco, quantidade) VALUES('Coquetel', '3000.00', '50');
+INSERT INTO produtos(nome, preco, quantidade) VALUES('Corporativo', '2550.00', '50');
+INSERT INTO produtos(nome, preco, quantidade) VALUES('Lual', '1150.00', '50');
+INSERT INTO produtos(nome, preco, quantidade) VALUES('Aperitivos', '1000.00', '50');
+INSERT INTO produtos(nome, preco, quantidade) VALUES('Decoracoes', '500.00', '50');
+
+INSERT INTO orcamentos(data, valor, pago, cdCliente, cdLocal) VALUES('01/10/2022', '6000.00', true, '1', '1');
+INSERT INTO orcamentos(data, valor, pago, cdCliente, cdLocal) VALUES('01/11/2022', '3050.00' , true, '2', '2');
+
+INSERT INTO itensdeorcamento(quantidade, valor, cdProduto, cdOrcamento) VALUES('1', '5000.00', '1', '1');
+INSERT INTO itensdeorcamento(quantidade, valor, cdProduto, cdOrcamento) VALUES('1', '1000.00', '5', '1');
+INSERT INTO itensdeorcamento(quantidade, valor, cdProduto, cdOrcamento) VALUES('1', '2550.00', '3', '2');
+INSERT INTO itensdeorcamento(quantidade, valor, cdProduto, cdOrcamento) VALUES('1', '500.00' , '6', '2');
+
