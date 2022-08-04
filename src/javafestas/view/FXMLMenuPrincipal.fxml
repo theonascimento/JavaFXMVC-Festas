@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/fxmlcss.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafestas.controller.FXMLMenuPrincipalController">
+   <children>
+      <Pane prefHeight="100.0" prefWidth="800.0">
+         <children>
+            <Pane layoutX="37.0" layoutY="11.0" prefHeight="86.0" prefWidth="270.0" styleClass="background-imagem" />
+         </children>
+         <styleClass>
+            <String fx:value="background-color" />
+            <String fx:value="custom-dashed-border" />
+         </styleClass>
+      </Pane>
+      <VBox layoutY="100.0" prefHeight="500.0" prefWidth="150.0">
+         <children>
+            <Pane prefHeight="57.0" prefWidth="120.0" />
+            <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" popupSide="RIGHT" prefHeight="50.0" prefWidth="140.0" styleClass="background-color" text="CADASTROS" textFill="WHITE">
+              <items>
+                <MenuItem fx:id="menuItemCadastrosCliente" mnemonicParsing="false" onAction="#handleMenuItemCadastrosClientes" text="Cliente" />
+                <MenuItem fx:id="menuItemCadastrosLocal" mnemonicParsing="false" onAction="#handleMenuItemCadastrosLocal" text="Local" />
+                  <MenuItem fx:id="menuItemCadastrosProduto" mnemonicParsing="false" text="Produto" />
+              </items>
+               <font>
+                  <Font name="SansSerif Bold" size="14.0" />
+               </font>
+            </MenuButton>
+            <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" popupSide="RIGHT" prefHeight="50.0" prefWidth="140.0" styleClass="background-color" text="PROCESSOS" textFill="WHITE">
+              <items>
+                <MenuItem fx:id="menuItemProcessosOrcamento" mnemonicParsing="false" onAction="#handleMenuItemProcessosOrcamento" text="Orçamento" />
+              </items>
+               <font>
+                  <Font name="SansSerif Bold" size="14.0" />
+               </font>
+            </MenuButton>
+            <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" popupSide="RIGHT" prefHeight="50.0" prefWidth="140.0" styleClass="background-color" text="GRÁFICOS" textFill="WHITE">
+              <items>
+                <MenuItem fx:id="menuItemGraficosOrcamentoPorMes" mnemonicParsing="false" onAction="#handleMenuItemGraficoOrcamento" text="Orçamento por Mês" />
+              </items>
+               <font>
+                  <Font name="SansSerif Bold" size="14.0" />
+               </font>
+            </MenuButton>
+            <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" popupSide="RIGHT" prefHeight="50.0" prefWidth="140.0" styleClass="background-color" text="RELATÓRIOS" textFill="WHITE">
+              <items>
+                <MenuItem fx:id="menuItemRelatoriosQuantiaArrecadadaPorLocal" mnemonicParsing="false" onAction="#handleMenuItemRelatorios" text="Quantia Arrecadada por Local" />
+              </items>
+               <font>
+                  <Font name="SansSerif Bold" size="14.0" />
+               </font>
+            </MenuButton>
+            <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" popupSide="RIGHT" prefHeight="50.0" prefWidth="140.0" styleClass="background-color" text="THREAD E SOCKETS" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+              <items>
+                <MenuItem fx:id="menuItemNClientes" mnemonicParsing="false" onAction="#handleMenuItemNClientes" text="N de Clientes" />
+              </items>
+               <font>
+                  <Font name="SansSerif Bold" size="14.0" />
+               </font>
+            </MenuButton>
+         </children>
+         <styleClass>
+            <String fx:value="background-color" />
+            <String fx:value="custom-border2" />
+         </styleClass>
+      </VBox>
+      <AnchorPane fx:id="anchorPane" layoutX="150.0" layoutY="100.0" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: #012E40;" />
+   </children>
+</AnchorPane>
